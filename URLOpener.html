@@ -1,0 +1,26 @@
+<form method="post" action="">
+  <br>
+  <textarea id="listURL" cols="60" rows="20"></textarea>
+  <br>
+  <br>
+  <input type="button" class="submit" onclick="openAll();" value="Open URLs">
+  <input type="reset" value="Reset">
+  <br>
+</form>
+
+<script>
+  let openAll = () => {
+    // Get links
+    let urls = document.getElementById("listURL").value;
+    let links = urls.split('\n');
+
+    links.forEach((link) => {
+      // Handled by most browsers anyways
+      if (link.substr(0, 7) != 'http://') link = 'http://' + link;
+        // Open link in new tab or window
+        window.open(link);
+    })
+    // Don't return nothing
+    return false;
+  }
+</script>
